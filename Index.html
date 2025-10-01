@@ -188,6 +188,9 @@
             font-family: 'Source Sans Pro', sans-serif !important;
             transition: all 0.3s ease !important;
             box-shadow: 0 3px 12px rgba(198, 123, 92, 0.2) !important;
+            will-change: transform !important;
+            backface-visibility: hidden !important;
+            -webkit-font-smoothing: subpixel-antialiased !important;
         }
 
         a.journey-btn:hover {
@@ -376,17 +379,19 @@
 
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            grid-template-columns: 1fr 1fr 1fr;
             gap: 2.5rem;
             margin-top: 3rem;
         }
 
         .services-grid:hover .service-card {
             filter: grayscale(100%);
+            transform: scale(0.95);
         }
 
         .services-grid:hover .service-card:hover {
             filter: grayscale(0%);
+            transform: scale(1.05);
         }
 
         .service-card {
@@ -398,6 +403,10 @@
             border: 1px solid rgba(198, 123, 92, 0.2);
             position: relative;
             overflow: hidden;
+            transform-origin: center;
+            will-change: transform;
+            backface-visibility: hidden;
+            -webkit-font-smoothing: subpixel-antialiased;
         }
 
         .service-card::before {
@@ -408,11 +417,6 @@
             width: 100%;
             height: 4px;
             background: linear-gradient(90deg, var(--primary-terracotta), var(--secondary-coral));
-        }
-
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.12);
         }
 
         .service-card h3 {
@@ -468,7 +472,7 @@
             transform: translateY(-2px);
         }
 
-        /* Contact Section */
+        /* Contact Section - 7-Day Challenge */
         .contact-section {
             padding: 5rem 0;
             background: var(--primary-terracotta);
@@ -496,25 +500,137 @@
             margin-right: auto;
         }
 
-        .contact-button {
-            background: var(--accent-teal);
-            color: var(--warm-white);
-            padding: 1rem 2.5rem;
-            text-decoration: none;
-            border-radius: 6px;
-            font-weight: 600;
-            font-size: 1.1rem;
-            font-family: 'Source Sans Pro', sans-serif;
-            transition: all 0.3s ease;
-            display: inline-block;
-            border: 2px solid transparent;
+        /* MailerLite Form Styling */
+        .challenge-form-wrapper {
+            max-width: 500px;
+            margin: 0 auto;
         }
 
-        .contact-button:hover {
-            background: var(--warm-white);
-            color: var(--accent-teal);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(74, 107, 124, 0.4);
+        .ml-form-embedContainer {
+            box-sizing: border-box !important;
+            display: table !important;
+            margin: 0 auto !important;
+            position: static !important;
+            width: 100% !important;
+        }
+
+        .ml-form-embedWrapper {
+            background-color: transparent !important;
+            border: none !important;
+            border-radius: 0 !important;
+            box-sizing: border-box !important;
+            display: inline-block !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            position: relative !important;
+            width: 100% !important;
+        }
+
+        .ml-form-embedBody {
+            padding: 0 !important;
+        }
+
+        .ml-form-fieldRow {
+            margin: 0 0 15px 0 !important;
+            width: 100% !important;
+        }
+
+        .ml-form-fieldRow input {
+            background-color: var(--warm-white) !important;
+            color: var(--text-charcoal) !important;
+            border: none !important;
+            border-radius: 6px !important;
+            font-family: 'Source Sans Pro', sans-serif !important;
+            font-size: 1.1rem !important;
+            line-height: 1.5 !important;
+            padding: 1rem 1.5rem !important;
+            width: 100% !important;
+            box-sizing: border-box !important;
+            transition: all 0.9s ease !important;
+            text-align: center !important;
+        }
+
+        .ml-form-fieldRow input::placeholder {
+            color: var(--text-light) !important;
+            opacity: 0.8 !important;
+            transition: color 0.9s ease !important;
+        }
+
+        .ml-form-fieldRow input:hover::placeholder {
+            color: var(--text-charcoal) !important;
+            opacity: 1 !important;
+        }
+
+        .ml-form-fieldRow input:focus {
+            outline: none !important;
+            border-color: var(--accent-teal) !important;
+            box-shadow: 0 0 0 3px rgba(74, 107, 124, 0.2) !important;
+        }
+
+        .ml-form-fieldRow input::placeholder {
+            color: var(--text-light) !important;
+            opacity: 0.8 !important;
+        }
+
+        .ml-form-embedSubmit {
+            margin: 0 !important;
+            width: 100% !important;
+        }
+
+        .ml-form-embedSubmit button {
+            background-color: var(--accent-teal) !important;
+            border: 2px solid var(--accent-teal) !important;
+            border-radius: 6px !important;
+            color: var(--warm-white) !important;
+            cursor: pointer !important;
+            font-family: 'Source Sans Pro', sans-serif !important;
+            font-size: 1.1rem !important;
+            font-weight: 600 !important;
+            line-height: 1.5 !important;
+            padding: 1rem 2rem !important;
+            width: 100% !important;
+            box-sizing: border-box !important;
+            transition: all 0.9s ease !important;
+            text-transform: none !important;
+            letter-spacing: normal !important;
+            display: inline-block !important;
+        }
+
+        .ml-form-embedSubmit button:hover {
+            background-color: #3c5a69 !important;
+            border-color: #3c5a69 !important;
+        }
+
+        .ml-form-embedSubmit .btn-text {
+            display: inline-block !important;
+            transition: transform 0.9s ease !important;
+        }
+
+        .ml-form-embedSubmit button:hover .btn-text {
+            transform: scale(1.05) !important;
+        }
+
+        .ml-form-embedSubmit button.loading {
+            display: none !important;
+        }
+
+        .ml-form-successContent h4 {
+            color: var(--warm-white) !important;
+            font-family: 'Cormorant Garamond', serif !important;
+            font-size: 2rem !important;
+            margin-bottom: 1rem !important;
+        }
+
+        .ml-form-successContent p {
+            color: var(--warm-white) !important;
+            font-family: 'Source Sans Pro', sans-serif !important;
+            font-size: 1.1rem !important;
+            opacity: 0.9 !important;
+        }
+
+        /* Loading spinner */
+        .ml-form-embedSubmitLoad:after {
+            border-color: var(--warm-white) var(--warm-white) var(--warm-white) transparent !important;
         }
 
         /* Responsive Design */
@@ -640,7 +756,9 @@
                 </a>
             </div>
             <div class="hero-image">
-                <img src="Claire Higgins Life Coach.jpg" alt="Claire Higgins Life Coach">
+                <img src="Claire Higgins Life Coach.jpg" 
+                     alt="Claire Higgins Life Coach"
+                     style="background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjQwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8IS0tIEJyaWNrIHdhbGwgYmFja2dyb3VuZCAtLT4KICA8cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjQwMCIgZmlsbD0iI0Q0QzBCQSIvPgogIDxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIzMDAiIGhlaWdodD0iMjAwIiBmaWxsPSIjQjk5Njc4Ii8+CiAgCiAgPCEtLSBCbHVlIHNvZmEgLS0+CiAgPHJlY3QgeD0iMCIgeT0iMjUwIiB3aWR0aD0iMzAwIiBoZWlnaHQ9IjE1MCIgZmlsbD0iIzRBNkI3QyIvPgogIAogIDwhLS0gR3JlZW4gcGxhbnQgLS0+CiAgPGVsbGlwc2UgY3g9IjI0MCIgY3k9IjIwMCIgcng9IjI1IiByeT0iNDAiIGZpbGw9IiM2QjhCNEUiLz4KICA8cmVjdCB4PSIyMzAiIHk9IjIzMCIgd2lkdGg9IjIwIiBoZWlnaHQ9IjUwIiBmaWxsPSIjNTQ3MjQyIi8+CiAgCiAgPCEtLSBQZXJzb24gc2lsaG91ZXR0ZSAtLT4KICA8IS0tIEhlYWQgLS0+CiAgPGNpcmNsZSBjeD0iMTUwIiBjeT0iMTMwIiByPSIzNSIgZmlsbD0iI0Y0RDBBNyIvPgogIDwhLS0gSGFpciAtLT4KICA8ZWxsaXBzZSBjeD0iMTUwIiBjeT0iMTEwIiByeD0iNDAiIHJ5PSIzMCIgZmlsbD0iI0RBQjc4QSIvPgogIDwhLS0gU3RyaXBlZCB0b3AgLS0+CiAgPHJlY3QgeD0iMTIwIiB5PSIxNjAiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgZmlsbD0iI0VDNjI1RiIvPgogIDxyZWN0IHg9IjEyMCIgeT0iMTcwIiB3aWR0aD0iNjAiIGhlaWdodD0iMTAiIGZpbGw9IiNGN0I4QjIiLz4KICA8cmVjdCB4PSIxMjAiIHk9IjE5MCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjEwIiBmaWxsPSIjRjdCOEIyIi8+CiAgPHJlY3QgeD0iMTIwIiB5PSIyMTAiIHdpZHRoPSI2MCIgaGVpZ2h0PSIxMCIgZmlsbD0iI0Y3QjhCMiIvPgogIDwhLS0gQXJtcyAtLT4KICA8cmVjdCB4PSI5MCIgeT0iMTcwIiB3aWR0aD0iMzAiIGhlaWdodD0iNDAiIGZpbGw9IiNFQzYyNUYiLz4KICA8cmVjdCB4PSIxODAiIHk9IjE3MCIgd2lkdGg9IjMwIiBoZWlnaHQ9IjQwIiBmaWxsPSIjRUM2MjVGIi8+CiAgPCEtLSBKZWFucyAtLT4KICA8cmVjdCB4PSIxMjUiIHk9IjIyMCIgd2lkdGg9IjUwIiBoZWlnaHQ9IjgwIiBmaWxsPSIjNzlBM0JGIi8+Cjwvc3ZnPgo='); background-size: cover; background-position: center;">
             </div>
         </div>
     </section>
@@ -675,7 +793,9 @@
             
             <div class="about-grid">
                 <div class="about-image">
-                    <img src="Claire Higgins About.jpg" alt="Claire Higgins Life Coach">
+                    <img src="Claire Higgins About.jpg" 
+                         alt="Claire Higgins Life Coach"
+                         style="background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjQwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8IS0tIEJyaWNrIHdhbGwgYmFja2dyb3VuZCAtLT4KICA8cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjQwMCIgZmlsbD0iI0Q0QzBCQSIvPgogIDxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIzMDAiIGhlaWdodD0iMjAwIiBmaWxsPSIjQjk5Njc4Ii8+CiAgCiAgPCEtLSBCbHVlIHNvZmEgLS0+CiAgPHJlY3QgeD0iMCIgeT0iMjUwIiB3aWR0aD0iMzAwIiBoZWlnaHQ9IjE1MCIgZmlsbD0iIzRBNkI3QyIvPgogIAogIDwhLS0gR3JlZW4gcGxhbnQgLS0+CiAgPGVsbGlwc2UgY3g9IjI0MCIgY3k9IjIwMCIgcng9IjI1IiByeT0iNDAiIGZpbGw9IiM2QjhCNEUiLz4KICA8cmVjdCB4PSIyMzAiIHk9IjIzMCIgd2lkdGg9IjIwIiBoZWlnaHQ9IjUwIiBmaWxsPSIjNTQ3MjQyIi8+CiAgCiAgPCEtLSBQZXJzb24gc2lsaG91ZXR0ZSAtLT4KICA8IS0tIEhlYWQgLS0+CiAgPGNpcmNsZSBjeD0iMTUwIiBjeT0iMTMwIiByPSIzNSIgZmlsbD0iI0Y0RDBBNyIvPgogIDwhLS0gSGFpciAtLT4KICA8ZWxsaXBzZSBjeD0iMTUwIiBjeT0iMTEwIiByeD0iNDAiIHJ5PSIzMCIgZmlsbD0iI0RBQjc4QSIvPgogIDwhLS0gU3RyaXBlZCB0b3AgLS0+CiAgPHJlY3QgeD0iMTIwIiB5PSIxNjAiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgZmlsbD0iI0VDNjI1RiIvPgogIDxyZWN0IHg9IjEyMCIgeT0iMTcwIiB3aWR0aD0iNjAiIGhlaWdodD0iMTAiIGZpbGw9IiNGN0I4QjIiLz4KICA8cmVjdCB4PSIxMjAiIHk9IjE5MCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjEwIiBmaWxsPSIjRjdCOEIyIi8+CiAgPHJlY3QgeD0iMTIwIiB5PSIyMTAiIHdpZHRoPSI2MCIgaGVpZ2h0PSIxMCIgZmlsbD0iI0Y3QjhCMiIvPgogIDwhLS0gQXJtcyAtLT4KICA8cmVjdCB4PSI5MCIgeT0iMTcwIiB3aWR0aD0iMzAiIGhlaWdodD0iNDAiIGZpbGw9IiNFQzYyNUYiLz4KICA8cmVjdCB4PSIxODAiIHk9IjE3MCIgd2lkdGg9IjMwIiBoZWlnaHQ9IjQwIiBmaWxsPSIjRUM2MjVGIi8+CiAgPCEtLSBKZWFucyAtLT4KICA8cmVjdCB4PSIxMjUiIHk9IjIyMCIgd2lkdGg9IjUwIiBoZWlnaHQ9IjgwIiBmaWxsPSIjNzlBM0JGIi8+Cjwvc3ZnPgo='); background-size: cover; background-position: center;">
                 </div>
                 
                 <div class="about-text">
@@ -733,13 +853,60 @@
         </div>
     </section>
 
-    <!-- Section 6: Contact -->
+    <!-- Section 6: 7-Day Challenge -->
     <section class="contact-section" id="contact">
         <div class="contact-content">
-            <h2>Ready to Choose You?</h2>
-            <p>If you're tired of living someone else's version of your life and ready to create something that feels authentically yours, let's talk. Your transformation starts with a single conversation.</p>
-            <a href="mailto:claire@clairehiggins.com" class="contact-button">Book Your Discovery Call</a>
+            <h2>Start Your Journey with the 7-Day Challenge</h2>
+            <p>Ready to begin choosing yourself? Join thousands who have transformed their lives with our free 7-day course delivered straight to your inbox. Each day brings simple, powerful exercises to help you reconnect with what truly matters.</p>
+            
+            <!-- MailerLite Form -->
+            <div class="challenge-form-wrapper">
+                <div id="mlb2-31495040" class="ml-form-embedContainer ml-subscribe-form ml-subscribe-form-31495040">
+                    <div class="ml-form-align-center">
+                        <div class="ml-form-embedWrapper embedForm">
+                            <div class="ml-form-embedBody ml-form-embedBodyDefault row-form">
+                                <form class="ml-block-form" action="https://assets.mailerlite.com/jsonp/1622663/forms/166961431768467293/subscribe" data-code="" method="post" target="_blank">
+                                    <div class="ml-form-formContent">
+                                        <div class="ml-form-fieldRow ml-last-item">
+                                            <div class="ml-field-group ml-field-email ml-validate-email ml-validate-required">
+                                                <input aria-label="email" aria-required="true" type="email" class="form-control" data-inputmask="" name="fields[email]" placeholder="Enter your email address" autocomplete="email">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <input type="hidden" name="ml-submit" value="1">
+                                    <div class="ml-form-embedSubmit">
+                                        <button type="submit" class="primary"><span class="btn-text">Get the free course</span></button>
+                                        <button disabled="disabled" style="display: none;" type="button" class="loading">
+                                            <div class="ml-form-embedSubmitLoad"></div>
+                                            <span class="sr-only">Loading...</span>
+                                        </button>
+                                    </div>
+                                    <input type="hidden" name="anticsrf" value="true">
+                                </form>
+                            </div>
+                            <div class="ml-form-successBody row-success" style="display: none">
+                                <div class="ml-form-successContent">
+                                    <h4>Thank you!</h4>
+                                    <p>You have successfully joined our subscriber list.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
+    <!-- MailerLite Scripts -->
+    <script>
+        function ml_webform_success_31495040() {
+            var $ = ml_jQuery || jQuery;
+            $('.ml-subscribe-form-31495040 .row-success').show();
+            $('.ml-subscribe-form-31495040 .row-form').hide();
+        }
+    </script>
+    <script src="https://groot.mailerlite.com/js/w/webforms.min.js?v176e10baa5e7ed80d35ae235be3d5024" type="text/javascript"></script>
+    <script>
+        fetch("https://assets.mailerlite.com/jsonp/1622663/forms/166961431768467293/takel")
+    </script>
 </body>
 </html>
